@@ -1259,6 +1259,7 @@ class listing
 
         $result['action']     = $action;
         $result['targets'][]  = $dn;
+
         // Make sure no other management class intercept the same dn
         unset($_REQUEST['dn']);
       }
