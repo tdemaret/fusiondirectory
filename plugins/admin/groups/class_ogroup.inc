@@ -299,7 +299,7 @@ class ogroup extends simplePlugin
   function prepare_save()
   {
     $this->reload();
-    parent::prepare_save();
+    $errors = parent::prepare_save();
 
     if ($this->trustMode == 'fullaccess') {
       $this->attrs['host'] = array('*');
@@ -311,6 +311,8 @@ class ogroup extends simplePlugin
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
     }
+
+    return $errors;
   }
 
   function reload()
